@@ -303,7 +303,7 @@ desired effect
       <!-- Your Page Content Here -->
 		<table>
 			<tr>
-				<td>이</td>
+				<td>이름</td>
 				<td></td>
 				<td>파일명</td>
 			</tr>

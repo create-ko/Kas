@@ -14,7 +14,7 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="bootstrap/**" location="/resources/main/bootstrap/**"  cache-period="31556926" />
+	<resources mapping="bootstrap/**" location="/resources/main/bootstrap/**"/>
 	<resources mapping="css/**" location="/resources/main/css/**" />
 	<resources mapping="js/**" location="/resources/main/js/**" />
 	<resources mapping="images/**" location="/resources/main/images/**" />
@@ -30,8 +30,17 @@
 		<beans:property name="order" value="0"/> 
 	</beans:bean>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/main"/>
+			<beans:bean class="com.spring.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 	<beans:bean id="download" class="com.spring.kas.DownloadView" />
+	
+	
+	<!-- <beans:bean id="loginconfirm" class="com.spring.kas.LoginConfirm" /> -->
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	<context:component-scan base-package="com.spring" />
