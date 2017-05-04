@@ -82,7 +82,7 @@ public class FileController implements ApplicationContextAware{
 		return mv;
 	}
 	
-	@RequestMapping(value="/main", method = {RequestMethod.POST, RequestMethod.POST})
+	@RequestMapping(value="/main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String fileSubmit(FileDTO dto) {
         MultipartFile uploadfile = dto.getUploadfile();
         
