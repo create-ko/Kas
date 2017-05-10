@@ -2,6 +2,8 @@ package com.spring.kas;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -23,6 +25,8 @@ public class DownloadView extends AbstractView {
     //Browser Check Method
     private String getBrowser(HttpServletRequest request){
     	String header = request.getHeader("User-Agent");
+    	
+    	System.out.println(header);
     	if(header.indexOf("MSIE") > -1){
     		return "MSIE";
     	}else if(header.indexOf("Chrome") >-1){
@@ -45,7 +49,6 @@ public class DownloadView extends AbstractView {
     		encodedFilename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
     	}else if(browser.equals("Firefox")){
     		encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
-    		encodedFilename = URLDecoder.decode(encodedFilename);
     	}else if(browser.equals("Chrome")){
     		StringBuffer sb = new StringBuffer();
     		for(int i=0;i<filename.length();i++){
@@ -61,7 +64,6 @@ public class DownloadView extends AbstractView {
     		encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
     	}else if(browser.equals("Safari")){
     		encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
-    		encodedFilename = URLDecoder.decode(encodedFilename);
     	}else {
     		throw new RuntimeException("Not supported browser");
     	}
@@ -69,6 +71,8 @@ public class DownloadView extends AbstractView {
 		return encodedFilename;
     }
 
+    
+    
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -78,31 +82,58 @@ public class DownloadView extends AbstractView {
 	        response.setContentLength((int)file.length());
 	        
 	        String fileName=file.getName();
-	        
 	        String testName= getDisposition(fileName, getBrowser(request));
 	        
-
+	        System.out.println("This is TestName " +testName);
+	        
+	        System.out.println("This is FileName "+fileName);
 	        
 	        response.setHeader("Content-Disposition", "attachment;filename=\""+testName+"\";");
 	        response.setHeader("Content-Transfer-Encoding", "binary");
 	        
+	        OutputStream os = null;
+	        InputStream in=null;
 	        
-	        OutputStream out = response.getOutputStream();
-	        FileInputStream fis = null;
+	        try{
+	        	try{
+	        		in = new FileInputStream(file);
+	        	}catch(FileNotFoundException e){
+	        		e.printStackTrace();
+	        	}
+	        
+	        	os = response.getOutputStream();
+	        	byte b[]= new byte[(int)file.length()];
+	        	int leng =0;
+	        
+	        	while( (leng = in.read(b)) > 0){
+	        		os.write(b,0,leng);
+	        	}
+	        	in.close();
+	        	os.close();
+	        	}catch(Exception e){
+	        		e.printStackTrace();
+	        	}
 	        
 	        
-	        try {
-	            fis = new FileInputStream(file);
-	            FileCopyUtils.copy(fis, out);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        } finally {
-	            if (fis != null) {
-	            	try { 
-	            		fis.close(); 
-	            		} catch (Exception e) {}
-	            	}
-	        }
-	        out.flush();
+	        
+	        
+	        
+//	        OutputStream out = response.getOutputStream();
+//	        FileInputStream fis = null;
+//	        
+//	        try {
+//	            fis = new FileInputStream(file);
+//	            FileCopyUtils.copy(fis, out);
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        } finally {
+//	            if (fis != null) {
+//	            	try { 
+//	            		fis.close(); 
+//	            		} catch (Exception e) {}
+//	            	}
+//	        }
+//	        out.flush();
 		
-	}}
+	}
+}

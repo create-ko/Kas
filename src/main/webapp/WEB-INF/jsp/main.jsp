@@ -56,7 +56,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="<c:url value="/test" />" class="logo">
+    <a href="<c:url value="/main" />" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>K</b>AS</span>
       <!-- logo for regular state and mobile devices -->
@@ -291,7 +291,7 @@ desired effect
     <div class="content">
         <div class="btn_go_control">
         
-        <form action="/test" method="post" enctype="multipart/form-data">
+        <form action="/main" method="post" enctype="multipart/form-data">
         	<input type="file" name="uploadfile"><input type="submit" value="upload">
         </form>
         
@@ -329,7 +329,7 @@ desired effect
       PROJECT
     </div>
     <!-- Default to the left -->
-    <strong>KAS_PROJECT &copy; 2017 <a href="<c:url value="/test" />">Company</a>.</strong> HYERIN
+    <strong>KAS_PROJECT &copy; 2017 <a href="<c:url value="/main" />">Company</a>.</strong> HYERIN
   </footer>
 
   <!-- Control Sidebar -->

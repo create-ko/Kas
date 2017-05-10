@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-
+import org.omg.IOP.Encoding;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -29,6 +29,8 @@ public class FileController implements ApplicationContextAware{
     @RequestMapping(value = "/file_down", method = RequestMethod.GET)
     public ModelAndView fileDown(@RequestParam("fileName") String fileName) {
     	String fullname = null;
+    	
+    	System.out.println(fullname);
     	try{
     		fullname=new String(fileName.getBytes("8859_1"), "utf-8");
     	}catch (UnsupportedEncodingException e){
@@ -77,10 +79,11 @@ public class FileController implements ApplicationContextAware{
 	public ModelAndView fileForm(){
 		ModelAndView mv = new ModelAndView();
 		ArrayList<FileDTO> list =  FileDAO.getInstance().listFile(ur);
-	    mv.addObject("list", list);
+		mv.addObject("list", list);
 		mv.setViewName("main");
 		return mv;
 	}
+	
 	
 	@RequestMapping(value="/main", method = {RequestMethod.POST, RequestMethod.POST})
 	public String fileSubmit(FileDTO dto) {
@@ -91,7 +94,6 @@ public class FileController implements ApplicationContextAware{
             long fileSize = uploadfile.getSize();
             dto.setFileName(fileName);
             dto.setFileSize(fileSize);
-            
             try {
                 File file = new File(ur + fileName);
                 uploadfile.transferTo(file);
@@ -99,15 +101,8 @@ public class FileController implements ApplicationContextAware{
                 e.printStackTrace();
             }
         }
-         
-        int listNum =(int)FileDAO.getRe();
-        
-        if (listNum == 0 ){
             return "redirect:/main";
-        }
-        else
-            return "redirect:/main";
-    }
+   }
 
 
 

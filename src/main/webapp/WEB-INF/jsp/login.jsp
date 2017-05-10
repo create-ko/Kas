@@ -8,7 +8,7 @@
     <head>
 	<style>
     body{
-    background-image : url("/resources/main/images/1.jpg");
+    background-image : url("images/1.jpg");
     }
     </style>
 	
