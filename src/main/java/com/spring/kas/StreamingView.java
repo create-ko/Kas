@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.AbstractView;
 
+
+//http://whiteduck.tistory.com/118
+
 public class StreamingView extends AbstractView {
 
 //	public StreamingView() {
