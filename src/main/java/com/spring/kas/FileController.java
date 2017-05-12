@@ -29,16 +29,25 @@ public class FileController implements ApplicationContextAware{
     @RequestMapping(value = "/file_down", method = RequestMethod.GET)
     public ModelAndView fileDown(@RequestParam("fileName") String fileName) {
     	String fullname = null;
-    	
-    	System.out.println(fullname);
     	try{
     		fullname=new String(fileName.getBytes("8859_1"), "utf-8");
     	}catch (UnsupportedEncodingException e){
     		e.printStackTrace();
     	}
-        String fullPath = ur + fullname ;
-        File downloadFile = new File(fullPath);
-        return new ModelAndView("download", "downloadFile", downloadFile);
+    	String fullPath = ur + fullname ;
+    	
+    	
+    	System.out.println(fullname.indexOf("mkv"));
+
+    	if(fullname.indexOf("mkv") == -1){
+    		File downloadFile = new File(fullPath);
+    		return new ModelAndView("download", "downloadFile", downloadFile);
+    	}
+    	else{
+    		File downloadFile = new File(fullPath);
+    		System.out.println("this is mkv" );
+            return new ModelAndView("streamingdownload", "downloadFile", downloadFile);
+    	}
     }
      
     @Override

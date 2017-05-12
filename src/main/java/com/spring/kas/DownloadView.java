@@ -66,11 +66,9 @@ public class DownloadView extends AbstractView {
     		encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
     	}else {
     		throw new RuntimeException("Not supported browser");
-    	}
-    	
-		return encodedFilename;
-    }
-
+    	}    	
+		return encodedFilename;  
+}
     
     
 	@Override
@@ -85,55 +83,52 @@ public class DownloadView extends AbstractView {
 	        String testName= getDisposition(fileName, getBrowser(request));
 	        
 	        System.out.println("This is TestName " +testName);
-	        
 	        System.out.println("This is FileName "+fileName);
-	        
-	        response.setHeader("Content-Disposition", "attachment;filename=\""+testName+"\";");
-	        response.setHeader("Content-Transfer-Encoding", "binary");
-	        
-	        OutputStream os = null;
-	        InputStream in=null;
-	        
-	        try{
-	        	try{
-	        		in = new FileInputStream(file);
-	        	}catch(FileNotFoundException e){
-	        		e.printStackTrace();
-	        	}
-	        
-	        	os = response.getOutputStream();
-	        	byte b[]= new byte[(int)file.length()];
-	        	int leng =0;
-	        
-	        	while( (leng = in.read(b)) > 0){
-	        		os.write(b,0,leng);
-	        	}
-	        	in.close();
-	        	os.close();
-	        	}catch(Exception e){
-	        		e.printStackTrace();
-	        	}
+
+	        response.addHeader("content-disposition", "attachment;filename=\"" + fileName + "\"");
+	        response.addHeader("Content-Transfer-Encoding", "binary");
 	        
 	        
-	        
-	        
-	        
-//	        OutputStream out = response.getOutputStream();
-//	        FileInputStream fis = null;
+//	        OutputStream os = null;
+//	        InputStream in=null;
 //	        
-//	        try {
-//	            fis = new FileInputStream(file);
-//	            FileCopyUtils.copy(fis, out);
-//	        } catch (Exception e) {
-//	            e.printStackTrace();
-//	        } finally {
-//	            if (fis != null) {
-//	            	try { 
-//	            		fis.close(); 
-//	            		} catch (Exception e) {}
-//	            	}
-//	        }
-//	        out.flush();
+//	        try{
+//	        	try{
+//	        		in = new FileInputStream(file);
+//	        	}catch(FileNotFoundException e){
+//	        		e.printStackTrace();
+//	        	}
+//	        
+//	        	os = response.getOutputStream();
+//	        	byte b[]= new byte[(int)file.length()];
+//	        	int leng =0;
+//	        
+//	        	while( (leng = in.read(b)) > 0){
+//	        		os.write(b,0,leng);
+//	        	}
+//	        	in.close();
+//	        	os.close();
+//	        	}catch(Exception e){
+//	        		e.printStackTrace();
+//	        	}
+	        
+	        
+	        OutputStream out = response.getOutputStream();
+	        FileInputStream fis = null;
+	        
+	        try {
+	            fis = new FileInputStream(file);
+	            FileCopyUtils.copy(fis, out);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (fis != null) {
+	            	try { 
+	            		fis.close(); 
+	            		} catch (Exception e) {}
+	            	}
+	        }
+	        out.flush();
 		
 	}
 }

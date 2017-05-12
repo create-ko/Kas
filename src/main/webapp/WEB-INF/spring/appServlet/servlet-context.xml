@@ -38,6 +38,7 @@
 	</interceptors>
 	
 	<beans:bean id="download" class="com.spring.kas.DownloadView" />
+	<beans:bean id="streamingdownload" class="com.spring.kas.StreamingView" />
 	
 	
 	<!-- <beans:bean id="loginconfirm" class="com.spring.kas.LoginConfirm" /> -->
