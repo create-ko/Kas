@@ -74,7 +74,8 @@ public class DownloadView extends AbstractView {
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
+			String dispositionPrefix = "attachment; filename=";
+			
 		 	File file = (File) model.get("downloadFile");
 	        response.setContentType(getContentType());
 	        response.setContentLength((int)file.length());
@@ -85,7 +86,7 @@ public class DownloadView extends AbstractView {
 	        System.out.println("This is TestName " +testName);
 	        System.out.println("This is FileName "+fileName);
 
-	        response.addHeader("content-disposition", "attachment;filename=\"" + fileName + "\"");
+	        response.addHeader("content-disposition", dispositionPrefix + testName);
 	        response.addHeader("Content-Transfer-Encoding", "binary");
 	        
 	        
