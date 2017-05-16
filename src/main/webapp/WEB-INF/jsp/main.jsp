@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -295,25 +296,50 @@ desired effect
         	<input type="file" name="uploadfile"><input type="submit" value="upload">
         </form>
         
-        
-        <a href="#" class="go_top" data-nclickcode=".up" style="visibility:visible;">상단으로 이동</a>
-        <a href="#" class="go_bottom" data-nclickcode=".down" style="visibility:visible;">하단으로 이동</a>
+
         
     </div>
       <!-- Your Page Content Here -->
 		<table>
-			<tr>
-				<td>이름</td>
-				<td></td>
-				<td>파일명</td>
-			</tr>
+
+
 			<c:if test="${ !empty list }"> 
-				<c:forEach items="${ list }" var="list">
-			<tr>
-				<td>${list.fileName }</td>
+				<c:forEach items="${list}" var="list">
+<!-- 			<tr> -->
+<%-- 				<td>${list.fileName }</td>
 				<td></td>
-				<td><a href="<c:url value="file_down?fileName=${ list.fileName }" />" >${ list.fileName }</a></td>
-			</tr>
+				<td><a href="<c:url value="file_down?fileName=${ list.fileName }" />" >${ list.fileName }</a></td> --%>
+				<div class="col-md-1 col-sm-4 col-xs-9">
+					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
+					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
+					
+					<c:forTokens var="token" items="${fileNm }" delims="." varStatus="status">
+					<c:if test="${status.last }"> <!-- 확장자 명을 가지고 if문 시행 -->
+					<c:choose>
+					
+					<c:when test="${token eq 'hwp' }">
+					<img src="/resources/main/images/han.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'xls' || token eq 'xlsx' }">
+					<img src="/resources/main/images/excel.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
+					<img src="/resources/main/images/png.png" alt="${filename }" /></c:when>
+					
+					<c:when test="${token eq 'pdf'}">
+					<img src="/resources/main/images/pdf.png" alt="${filename }" />	</c:when>
+					
+					<c:when test="${token eq 'ppt' }">
+					<img src="/resources/main/images/ppt.png" alt="${filename}" /> </c:when>
+					
+					<c:otherwise>
+					<img src="/resources/main/images/basic.png" alt="${filename }" /> </c:otherwise> </c:choose>  </c:if>
+					</c:forTokens>
+  					<a href="<c:url value="file_down?fileName=${ list.fileName }"  />" class="thumbnail purple">${ list.fileName }</a>
+				</div>
+<!-- 			</tr> -->
 			</c:forEach>
 			</c:if>
 		</table>

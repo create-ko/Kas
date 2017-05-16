@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.omg.IOP.Encoding;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 ///Users/seung_hee/Desktop/test_folder/
 @Controller
 public class FileController implements ApplicationContextAware{
-	
-	String ur = "/Users/seung_hee/Desktop/test_folder/";
-	
+
+/*	String ur = "/Users/seung_hee/Desktop/test_folder/";*/
+	/*String ur = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "Desktop" + File.separator + "test" + File.separator;*/
 	private WebApplicationContext context = null;
 	 
     @RequestMapping(value = "/file_down", method = RequestMethod.GET)
