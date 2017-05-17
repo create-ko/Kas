@@ -309,13 +309,64 @@ desired effect
 <%-- 				<td>${list.fileName }</td>
 				<td></td>
 				<td><a href="<c:url value="file_down?fileName=${ list.fileName }" />" >${ list.fileName }</a></td> --%>
-				<div class="col-md-1 col-sm-4 col-xs-9">
+				<div class="col-md-1 col-xs-2"> <!--데스크탑, 모바일 -->
 					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
 					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
 					
 					<c:forTokens var="token" items="${fileNm }" delims="." varStatus="status">
 					<c:if test="${status.last }"> <!-- 확장자 명을 가지고 if문 시행 -->
 					<c:choose>
+					
+					<c:when test="${token eq 'word' }">
+					<img src="/resources/main/images/word.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'html' }">
+					<img src="/resources/main/images/html.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'zip' }">
+					<img src="/resources/main/images/zip.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'tar' }">
+					<img src="/resources/main/images/tar.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'mp3' }">
+					<img src="/resources/main/images/music.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'torrent' }">
+					<img src="/resources/main/images/torrent.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'txt' }">
+					<img src="/resources/main/images/txt.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'jpg' }">
+					<img src="/resources/main/images/jpg.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'ttf' }">
+					<img src="/resources/main/images/ttf.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'gif' }">
+					<img src="/resources/main/images/gif.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'flash' }">
+					<img src="/resources/main/images/flash.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'fireworks' }">
+					<img src="/resources/main/images/fireworks.png" alt="${filename }" />
+					</c:when>
+					
+					<c:when test="${token eq 'avi' || token eq 'mkv' || token eq 'mp4' || token eq 'mov' || token eq 'wmv' || token eq 'mpeg'}">
+					<img src="/resources/main/images/video.png" alt="${filename }" /></c:when>
 					
 					<c:when test="${token eq 'hwp' }">
 					<img src="/resources/main/images/han.png" alt="${filename }" />
@@ -337,8 +388,9 @@ desired effect
 					<c:otherwise>
 					<img src="/resources/main/images/basic.png" alt="${filename }" /> </c:otherwise> </c:choose>  </c:if>
 					</c:forTokens>
-  					<a href="<c:url value="file_down?fileName=${ list.fileName }"  />" class="thumbnail purple">${ list.fileName }</a>
+  					<a href="<c:url value="file_down?fileName=${ list.fileName }"  />" class="thumbnail white">${ list.fileName }</a>
 				</div>
+
 <!-- 			</tr> -->
 			</c:forEach>
 			</c:if>
@@ -369,28 +421,28 @@ desired effect
     <div class="tab-content">
       <!-- Home tab content -->
       <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <h3 class="control-sidebar-heading">WEB project</h3>
         <ul class="control-sidebar-menu">
           <li>
             <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+              <i class="menu-icon fa fa-leaf bg-red"></i>
 
               <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                <h4 class="control-sidebar-subheading">Team Name : KAS</h4>
 
-                <p>Will be 23 on April 24th</p>
+                <p>Team Member1 : ko seung hee</p>
+                <p>Team Member2 : kim hye rin</p>
               </div>
             </a>
           </li>
         </ul>
         <!-- /.control-sidebar-menu -->
 
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
             <a href="javascript:;">
               <h4 class="control-sidebar-subheading">
-                Custom Template Design
+           남은 용량       /   총 용량
                 <span class="pull-right-container">
                   <span class="label label-danger pull-right">70%</span>
                 </span>
@@ -412,16 +464,16 @@ desired effect
       <!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
+          <h3 class="control-sidebar-heading">설정 관련 피드백</h3>
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
+              연락처
+
             </label>
 
             <p>
-              Some information about this general settings option
+              010)0000-0000
             </p>
           </div>
           <!-- /.form-group -->

@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class FileController implements ApplicationContextAware{
 
 /*	String ur = "/Users/seung_hee/Desktop/test_folder/";*/
-	/*String ur = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "Desktop" + File.separator + "test" + File.separator;*/
+	String ur = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "Desktop" + File.separator + "test" + File.separator;
 	private WebApplicationContext context = null;
 	 
     @RequestMapping(value = "/file_down", method = RequestMethod.GET)
