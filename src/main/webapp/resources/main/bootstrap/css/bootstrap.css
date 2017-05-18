@@ -28,14 +28,7 @@ summary {
   display: block;
 }
 
-.btn_go_cotrol a.go_top {
-    background-position: -100px -101px;
-}
-.btn_go_cotrol a.go_bottom {
-    margin-top: -1px;
-    background-position: -100px -140px;
-}
-.btn_go_cotrol a {
+.btn_go_control {
     visibility: visible;
     overflow: hidden;
     display: block;

@@ -290,25 +290,22 @@ desired effect
 
     <!-- 상단으로이동, 하단으로이동 -->
     <div class="content">
-        <div class="btn_go_control">
+        <div class="btn_go_control" >
         
         <form action="/main" method="post" enctype="multipart/form-data">
         	<input type="file" name="uploadfile"><input type="submit" value="upload">
         </form>
-        
-
-        
-    </div>
+        <form action="/main" method="post" >
+        	<input type="button" name="delete" value="Delete"><input type="button" name="download" value="Download">
+        </form>
+        </div>
       <!-- Your Page Content Here -->
 		<table>
 
 
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
-<!-- 			<tr> -->
-<%-- 				<td>${list.fileName }</td>
-				<td></td>
-				<td><a href="<c:url value="file_down?fileName=${ list.fileName }" />" >${ list.fileName }</a></td> --%>
+
 				<div class="col-md-1 col-xs-2"> <!--데스크탑, 모바일 -->
 					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
 					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
@@ -391,7 +388,6 @@ desired effect
   					<a href="<c:url value="file_down?fileName=${ list.fileName }"  />" class="thumbnail white">${ list.fileName }</a>
 				</div>
 
-<!-- 			</tr> -->
 			</c:forEach>
 			</c:if>
 		</table>
