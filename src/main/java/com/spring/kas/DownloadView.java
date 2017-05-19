@@ -82,36 +82,13 @@ public class DownloadView extends AbstractView {
 	        
 	        String fileName=file.getName();
 	        String testName= getDisposition(fileName, getBrowser(request));
-	        
-	        System.out.println("This is TestName " +testName);
-	        System.out.println("This is FileName "+fileName);
+
+//	        System.out.println("This is TestName " +testName);
+//	        System.out.println("This is FileName "+fileName);
 
 	        response.addHeader("content-disposition", dispositionPrefix + testName);
 	        response.addHeader("Content-Transfer-Encoding", "binary");
 	        
-	        
-//	        OutputStream os = null;
-//	        InputStream in=null;
-//	        
-//	        try{
-//	        	try{
-//	        		in = new FileInputStream(file);
-//	        	}catch(FileNotFoundException e){
-//	        		e.printStackTrace();
-//	        	}
-//	        
-//	        	os = response.getOutputStream();
-//	        	byte b[]= new byte[(int)file.length()];
-//	        	int leng =0;
-//	        
-//	        	while( (leng = in.read(b)) > 0){
-//	        		os.write(b,0,leng);
-//	        	}
-//	        	in.close();
-//	        	os.close();
-//	        	}catch(Exception e){
-//	        		e.printStackTrace();
-//	        	}
 	        
 	        
 	        OutputStream out = response.getOutputStream();

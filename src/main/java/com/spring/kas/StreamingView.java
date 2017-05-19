@@ -17,9 +17,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 public class StreamingView extends AbstractView {
 
-//	public StreamingView() {
-//		setContentType("applicaiton/download; utf-8");
-//	}
+
 
 	//Browser Check Method
 	private String getBrowser(HttpServletRequest request){
@@ -125,22 +123,5 @@ public class StreamingView extends AbstractView {
 				e.printStackTrace();
 			}finally{ randomFile.close(); }
 		 }
-			
-
-
-//		
-//		response.setContentType(getContentType());
-//		response.setContentLength((int)file.length());
-//
-//		String fileName=file.getName();
-//		String testName= getDisposition(fileName, getBrowser(request));
-//
-//		System.out.println("This is TestName " +testName);
-//		System.out.println("This is FileName "+fileName);
-//
-//		response.addHeader("content-disposition", "attachment;filename=\"" + fileName + "\"");
-//		response.addHeader("Content-Transfer-Encoding", "binary");
-
-
 
 }

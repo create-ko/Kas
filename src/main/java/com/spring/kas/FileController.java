@@ -37,8 +37,6 @@ public class FileController implements ApplicationContextAware{
     	
     	
 //    	System.out.println(fullname.indexOf("mkv"));
-
-    	
     	if(fullname.indexOf("mkv") == -1){
     		File downloadFile = new File(fullPath);
     		return new ModelAndView("download", "downloadFile", downloadFile);

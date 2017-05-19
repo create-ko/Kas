@@ -289,24 +289,23 @@ desired effect
     </section>
 
     <!-- 상단으로이동, 하단으로이동 -->
-    <div class="content">
-        <div class="btn_go_control" >
-        
-        <form action="/main" method="post" enctype="multipart/form-data">
-        	<input type="file" name="uploadfile"><input type="submit" value="upload">
-        </form>
-        <form action="/main" method="post" >
-        	<input type="button" name="delete" value="Delete"><input type="button" name="download" value="Download">
-        </form>
-        </div>
+    
+    <div class="content" >
+				<div class="btn_go_control">
+					<form action="/main" method="post" enctype="multipart/form-data">
+						<input type="file" name="uploadfile"> <input type="submit"
+							value="upload">
+					</form>
+				</div>
+				<form action="/file_down" method="get">
+					<button type="submit" >Download</button>
+
       <!-- Your Page Content Here -->
-		<table>
-
-
+		<div>
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
 
-				<div class="col-md-1 col-xs-2"> <!--데스크탑, 모바일 -->
+				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px; padding-left:28px"> <!--데스크탑, 모바일 -->
 					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
 					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
 					
@@ -363,7 +362,8 @@ desired effect
 					</c:when>
 					
 					<c:when test="${token eq 'avi' || token eq 'mkv' || token eq 'mp4' || token eq 'mov' || token eq 'wmv' || token eq 'mpeg'}">
-					<img src="/resources/main/images/video.png" alt="${filename }" /></c:when>
+					<img src="/resources/main/images/video.png" alt="${filename }" />
+					</c:when>
 					
 					<c:when test="${token eq 'hwp' }">
 					<img src="/resources/main/images/han.png" alt="${filename }" />
@@ -374,37 +374,45 @@ desired effect
 					</c:when>
 					
 					<c:when test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
-					<img src="/resources/main/images/png.png" alt="${filename }" /></c:when>
+					<img src="/resources/main/images/png.png" alt="${filename }" />
+					</c:when>
 					
 					<c:when test="${token eq 'pdf'}">
-					<img src="/resources/main/images/pdf.png" alt="${filename }" />	</c:when>
+					<img src="/resources/main/images/pdf.png" alt="${filename }" />
+					</c:when>
+					
 					
 					<c:when test="${token eq 'ppt' }">
-					<img src="/resources/main/images/ppt.png" alt="${filename}" /> </c:when>
+					<img src="/resources/main/images/ppt.png" alt="${filename}" /> 
+					</c:when>
 					
 					<c:otherwise>
-					<img src="/resources/main/images/basic.png" alt="${filename }" /> </c:otherwise> </c:choose>  </c:if>
+					<img src="/resources/main/images/basic.png" alt="${filename }" /> 
+					</c:otherwise> 
+					</c:choose>  
+					</c:if>
 					</c:forTokens>
-  					<a href="<c:url value="file_down?fileName=${ list.fileName }"  />" class="thumbnail white">${ list.fileName }</a>
+					<input type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white">${ list.fileName }
 				</div>
-
+			
 			</c:forEach>
 			</c:if>
-		</table>
+		</div>
+ 		</form> 
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
+ <!-- Main Footer -->
+  <div class="main-footer" style="position: fixed!important">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
+    <div class="pull-right hidden-xs" >
       PROJECT
     </div>
     <!-- Default to the left -->
     <strong>KAS_PROJECT &copy; 2017 <a href="<c:url value="/main" />">Company</a>.</strong> HYERIN
-  </footer>
+  </div>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
