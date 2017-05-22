@@ -17,8 +17,6 @@ public class FileDAO {
 
 	}
 
-
-
 	public ArrayList<FileDTO> listFile(String source) {
 			list.clear();
 			File directory = new File(source);
@@ -32,15 +30,20 @@ public class FileDAO {
 					}else if(file.isDirectory()){
 						dto.setName(file.getName());
 						dto.setFileName(file.getName());
-//						listFile(file.getCanonicalPath().toString());
 					}
 					list.add(dto);
-//					System.out.println("This list add " + list);
 				}
 			}catch (Exception e){
 				e.printStackTrace();
 			}
 			return list;
+	}
+	
+	public FileDTO redirectory(){
+		FileDTO dto=new FileDTO();
+		dto.setName("..");
+		dto.setFileName("..");
+		return dto;
 	}
 
 }

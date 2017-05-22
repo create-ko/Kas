@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -297,9 +298,15 @@ desired effect
 							value="upload">
 					</form>
 				</div>
-				<form action="/file_down" method="get">
-					<button type="submit" >Download</button>
-
+<!-- 				<script type="text/javascript">
+					function mySubmit() {
+						location.href='/file_delete?'
+					}
+				</script> -->
+				<form action="/file_control" method="get">
+				 <button type="submit" name="download">Download</button>
+				 <button type="submit" name="delete" >Delete</button>
+				 
       <!-- Your Page Content Here -->
 		<div>
 			<c:if test="${ !empty list }"> 
