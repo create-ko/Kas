@@ -13,7 +13,10 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
+  <link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel='stylesheet' type='text/css'>
+  
   <link href="<c:url value="/resources/main/bootstrap/css/bootstrap.min.css" />" rel="stylesheet"  >
+  
   <!-- Font Awesome -->
   <link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />" rel="stylesheet">
   <!-- Ionicons -->
@@ -51,14 +54,14 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" style="font-family:'Hanna',sans-serif">
 <div class="wrapper">
 
   <!-- Main Header -->
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="<c:url value="/main" />" class="logo">
+    <a href="<c:url value="/main" />" class="logo" style="background-color:#367fa9; color:white">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>K</b>AS</span>
       <!-- logo for regular state and mobile devices -->
@@ -66,18 +69,18 @@ desired effect
     </a>
 
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
+    <nav class="navbar navbar-static-top" role="navigation" style="background-color:#3c8dbc">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="color:white">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
+          <li class="dropdown messages-menu" style="color:white">
             <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white">
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
             </a>
@@ -114,7 +117,7 @@ desired effect
           <li class="dropdown notifications-menu">
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
+              <i class="fa fa-bell-o" style="color:white"></i>
               <span class="label label-warning">10</span>
             </a>
             <ul class="dropdown-menu">
@@ -137,7 +140,7 @@ desired effect
           <li class="dropdown tasks-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
+              <i class="fa fa-flag-o" style="color:white"></i>
               <span class="label label-danger">9</span>
             </a>
             <ul class="dropdown-menu">
@@ -176,7 +179,7 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="<c:url value="/resources/main/images/userface.jpg" />" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">KOSEUNGHEE</span>
+              <span class="hidden-xs" style="color:white">KOSEUNGHEE</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -223,17 +226,17 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+  <aside class="main-sidebar" style="background-color:#222d32">
 
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+    <section class="sidebar" style="background-color:#222d32">
 
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
           <img src="<c:url value="/resources/main/images/userface.jpg" />" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
+        <div class="pull-left info" style="color:#fff">
           <p>KOSEUNGHEE</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -241,10 +244,10 @@ desired effect
       </div>
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
+      <form action="#" method="get" class="sidebar-form" style="border-radius:3px ; border:1px solid #374850; margin:10px 10px; overflow:hidden; text-overflow:clip">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
+          <input type="text" name="q" class="form-control" placeholder="Search..." style="background-color:#374850">
+              <span class="input-group-btn" style="width:1%; display:table-cell">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
@@ -254,19 +257,19 @@ desired effect
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">목록</li>
+        <li class="header" style="color:#4b646f; size:30px">목록</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>파일</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>사진</span></a></li>
+        <li class="active"><a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>파일</span></a></li>
+        <li><a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>사진</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>동영상</span>
+          <a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>동영상</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">기본 동영상</a></li>
-            <li><a href="#">토렌트</a></li>
+            <li><a href="#" style="color:#fff">기본 동영상</a></li>
+            <li><a href="#" style="color:#fff">토렌트</a></li>
           </ul>
         </li>
       </ul>
@@ -283,36 +286,31 @@ desired effect
         KAS
         <small>Spring Framework Project</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+
     </section>
 
-    <!-- 상단으로이동, 하단으로이동 -->
-    
-    <div class="content" >
+    <div class="content">
+
 				<div class="btn_go_control">
 					<form action="/main" method="post" enctype="multipart/form-data">
-						<input type="file" name="uploadfile"> <input type="submit"
-							value="upload">
+						<input type="file" name="uploadfile" class="btn btn-default"  style="float:left ;margin:5px">
+						<input type="submit" value="upload" class="btn btn-default"  style="float:left ; margin:6px">
 					</form>
 				</div>
-<!-- 				<script type="text/javascript">
-					function mySubmit() {
-						location.href='/file_delete?'
-					}
-				</script> -->
+
 				<form action="/file_control" method="get">
-				 <button type="submit" name="download">Download</button>
-				 <button type="submit" name="delete" >Delete</button>
-				 
+				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
+				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
+				<br><br><br>
+	
       <!-- Your Page Content Here -->
 		<div>
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
-
-				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px; padding-left:28px"> <!--데스크탑, 모바일 -->
+				<div style="float:left">
+				<input type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white" style="float:left ">
+				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px ; padding-top: 30px">
+				 <div style="padding-left:43px">
 					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
 					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
 					
@@ -395,15 +393,20 @@ desired effect
 					
 					<c:otherwise>
 					<img src="/resources/main/images/basic.png" alt="${filename }" /> 
+					
 					</c:otherwise> 
 					</c:choose>  
 					</c:if>
 					</c:forTokens>
-					<input type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white">${ list.fileName }
+					</div>
+					
+					
 				</div>
-			
+				<p style="text-align:center; margin-top:1px ; margin-left:18px;width:156px"> ${ list.fileName }</p>
+			  </div>
 			</c:forEach>
 			</c:if>
+
 		</div>
  		</form> 
     </div>
@@ -412,9 +415,9 @@ desired effect
   <!-- /.content-wrapper -->
 
  <!-- Main Footer -->
-  <div class="main-footer" style="position: fixed!important">
+  <div class="main-footer" style="background-color:#fff ; padding:15px; color:#444 ; border-top :1px solid #d2d6de">
     <!-- To the right -->
-    <div class="pull-right hidden-xs" >
+    <div class="pull-right hidden-xs">
       PROJECT
     </div>
     <!-- Default to the left -->
