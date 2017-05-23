@@ -40,7 +40,6 @@
 	<beans:bean id="download" class="com.spring.kas.DownloadView" />
 	<beans:bean id="streamingdownload" class="com.spring.kas.StreamingView" />
 	<beans:bean id="path" class="com.spring.kas.Path" />
-	<beans:bean id="deletefile" class="com.spring.kas.DeleteView" />
 	
 	
 	<!-- <beans:bean id="loginconfirm" class="com.spring.kas.LoginConfirm" /> -->

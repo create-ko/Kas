@@ -78,100 +78,6 @@ desired effect
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu" style="color:white">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">upload</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="<c:url value="/resources/main/images/userface.jpg" />" class="img-circle" alt="User Image">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- /.messages-menu -->
-
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o" style="color:white"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o" style="color:white"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- Inner menu: contains the tasks -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <!-- Task title and progress text -->
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -186,25 +92,10 @@ desired effect
               <li class="user-header">
                 <img src="<c:url value="/resources/main/images/userface.jpg" />" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <p style="color:blue">
+                  Kim Hyerin and Ko SeungHee - web Develop
+                  <small>Member Since June. 2017</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -259,19 +150,24 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header" style="color:#4b646f; size:30px">목록</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>파일</span></a></li>
-        <li><a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>사진</span></a></li>
-        <li class="treeview">
-          <a href="#" style="color:#fff"><i class="fa fa-link" style="color:#fff"></i> <span>동영상</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#" style="color:#fff">기본 동영상</a></li>
-            <li><a href="#" style="color:#fff">토렌트</a></li>
-          </ul>
+        <li class="active">
+        <form action="/all_list" method="post">
+        <button class="btn btn-default" type="submit" name="all_list" style="color:#fff; background-color:#222d32;"><i class="fa fa-link" style="color:#fff"></i> <span>전체보기</span></button>
+        </form>
         </li>
+        <li class="active">
+        <form action="/pic_list" method="post">
+        <button class="btn btn-default" type="submit" name="pic_list" style="color:#fff; background-color:#222d32"><i class="fa fa-link" style="color:#fff"></i> <span>사진</span></button>
+        </form>
+        </li> 
+        
+        <li class="active">
+        <form action="/movie_list" method="post">
+        <button class="btn btn-default" type="submit" name="movie_list" style="color:#fff; background-color:#222d32"><i class="fa fa-link" style="color:#fff"></i> <span>동영상</span></button>
+        </form>
+        </li>
+
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -297,10 +193,22 @@ desired effect
 						<input type="submit" value="upload" class="btn btn-default"  style="float:left ; margin:6px">
 					</form>
 				</div>
-
+				<script type="text/javascript">
+					function btn_js_prompt_click(){
+	  						var name = prompt("폴더명?", "새 폴더");
+	  						if(name != null){
+	  							alert(name+" 폴더가 생성되었습니다.");
+	  							document.getElementById('newFolder').value = name;
+	  						}else{
+	  							alert("취소버튼을 눌렀습니다.");
+	  						}
+	  					}
+				</script>
 				<form action="/file_control" method="get">
 				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
 				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
+				 <button type="submit" name="join" class="btn btn-default"  style="float:left ; margin:6px">JoinFolder</button>
+				 <button type="submit" id="newFolder" name="newFolder" class="btn btn-default" onClick="btn_js_prompt_click()" style="float:left ; margin:6px">New Folder</button>
 				<br><br><br>
 	
       <!-- Your Page Content Here -->
@@ -318,7 +226,7 @@ desired effect
 					<c:if test="${status.last }"> <!-- 확장자 명을 가지고 if문 시행 -->
 					<c:choose>
 					
-					<c:when test="${token eq 'word' }">
+					<c:when test="${token eq 'word' || token eq 'docx'}">
 					<img src="/resources/main/images/word.png" alt="${filename }" />
 					</c:when>
 					
@@ -386,15 +294,21 @@ desired effect
 					<img src="/resources/main/images/pdf.png" alt="${filename }" />
 					</c:when>
 					
-					
 					<c:when test="${token eq 'ppt' }">
 					<img src="/resources/main/images/ppt.png" alt="${filename}" /> 
 					</c:when>
 					
+					<c:when test="${token eq 'smi' || token eq 'srt' }">
+					<img src="/resources/main/images/smi.png" alt="${filename }" />
+					</c:when> 
+					
+					<c:when test="${!token }">
+					<img src="/resources/main/images/folder.png" alt="${filename }" />
+					</c:when> 
+					
 					<c:otherwise>
 					<img src="/resources/main/images/basic.png" alt="${filename }" /> 
-					
-					</c:otherwise> 
+					</c:otherwise>
 					</c:choose>  
 					</c:if>
 					</c:forTokens>
