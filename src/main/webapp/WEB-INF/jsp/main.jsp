@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,15 +25,27 @@
   <!-- Theme style -->
   <link href="<c:url value="/resources/main/css/AdminLTE.min.css" />" rel="stylesheet" >
 
-    <link href="<c:url value="/resources/main/bootstrap/css/AdminLTE.css" />" rel="stylesheet"  >
-    <link href="<c:url value="/resources/main/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet"  >
-    <link href="<c:url value="/resources/main/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet"  >
+    <%-- <link href="<c:url value="/resources/main/css/AdminLTE.css" />" rel="stylesheet"  > --%>
+    <link href="<c:url value="/resources/main/bootstrap/css_login/bootstrap-theme.css" />" rel="stylesheet"  >
+    <link href="<c:url value="/resources/main/bootstrap/css_login/bootstrap-theme.min.css" />" rel="stylesheet"  >
     
     <link href="<c:url value="/resources/main/bootstrap/css/dist/css/bootstrap.css" />" rel="stylesheet"  >
     <link href="<c:url value="/resources/main/bootstrap/css/less/bootstrap.min.css" />" rel="stylesheet"  >
     
-  <link href="<c:url value="/resources/main/bootstrap/css/skins/skin-blue.min.css" />" rel="stylesheet"  >
+  <%-- <link href="<c:url value="/resources/main/css/skins/skin-blue.min.css" />" rel="stylesheet"  > --%>
 
+<!-- <style>
+            .dragAndDrop {
+                border: 2px dashed #92AAB0;
+                width: 230px;
+                height: 500px;
+                color: #92AAB0;
+                vertical-align: middle;
+                padding: 10px 0px 10px 10px;
+                display: table-cell;
+            }
+</style> -->
+  
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -135,9 +148,9 @@ desired effect
       </div>
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form" style="border-radius:3px ; border:1px solid #374850; margin:10px 10px; overflow:hidden; text-overflow:clip">
+      <form action="/main/search" method="post" class="sidebar-form" style="border-radius:3px ; border:1px solid #374850; margin:10px 10px; overflow:hidden; text-overflow:clip">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search..." style="background-color:#374850">
+          <input type="text" name="search" class="form-control" placeholder="Search..." style="background-color:#374850">
               <span class="input-group-btn" style="width:1%; display:table-cell">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -152,29 +165,28 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
         <form action="/all_list" method="post">
-        <button class="btn btn-default" type="submit" name="all_list" style="color:#fff; background-color:#222d32;"><i class="fa fa-link" style="color:#fff"></i> <span>전체보기</span></button>
+        <button class="btn btn-default" type="submit" name="all_list" style="color:#fff; background-color:#222d32; width:230px; text-align: center; padding: 10px 0px 10px 10px;"><i class="fa fa-link" style="color:#fff"></i> <span>전체보기</span></button>
         </form>
         </li>
         <li class="active">
         <form action="/pic_list" method="post">
-        <button class="btn btn-default" type="submit" name="pic_list" style="color:#fff; background-color:#222d32"><i class="fa fa-link" style="color:#fff"></i> <span>사진</span></button>
+        <button class="btn btn-default" type="submit" name="pic_list" style="color:#fff; background-color:#222d32; width:230px; text-align: center; padding: 10px 0px 10px 10px;"><i class="fa fa-link" style="color:#fff"></i> <span>사진</span></button>
         </form>
         </li> 
         
         <li class="active">
         <form action="/movie_list" method="post">
-        <button class="btn btn-default" type="submit" name="movie_list" style="color:#fff; background-color:#222d32"><i class="fa fa-link" style="color:#fff"></i> <span>동영상</span></button>
+        <button class="btn btn-default" type="submit" name="movie_list" style="color:#fff; background-color:#222d32; width:230px; text-align: center; padding: 10px 0px 10px 10px;"><i class="fa fa-link" style="color:#fff"></i> <span>동영상</span></button>
         </form>
         </li>
-
-        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
+	
+        
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -182,28 +194,15 @@ desired effect
         KAS
         <small>Spring Framework Project</small>
       </h1>
-
     </section>
-
-    <div class="content">
-
+<!-- Drag and Drop -->
+			<div class=dragAndDrop>			
 				<div class="btn_go_control">
 					<form action="/main" method="post" enctype="multipart/form-data">
 						<input type="file" name="uploadfile" class="btn btn-default"  style="float:left ;margin:5px">
 						<input type="submit" value="upload" class="btn btn-default"  style="float:left ; margin:6px">
 					</form>
 				</div>
-				<script type="text/javascript">
-					function btn_js_prompt_click(){
-	  						var name = prompt("폴더명?", "새 폴더");
-	  						if(name != null){
-	  							alert(name+" 폴더가 생성되었습니다.");
-	  							document.getElementById('newFolder').value = name;
-	  						}else{
-	  							alert("취소버튼을 눌렀습니다.");
-	  						}
-	  					}
-				</script>
 				<form action="/file_control" method="get">
 				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
 				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
@@ -216,9 +215,10 @@ desired effect
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
 				<div style="float:left">
-				<input type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white" style="float:left ">
+				<input id="${ list.fileName }" type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white" style="float:left ">
 				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px ; padding-top: 30px">
 				 <div style="padding-left:43px">
+				 <label for="${ list.fileName }">
 					<c:set var="filename" value="${ list.fileName }" /> <!-- filename 변수 저장 -->
 					<c:set var="fileNm" value="${fn:toLowerCase(filename)}" /> <!-- 확장자명이 대문자일 경우 소문자로 파일을 변경한다. -->
 					
@@ -312,9 +312,8 @@ desired effect
 					</c:choose>  
 					</c:if>
 					</c:forTokens>
+					</label>
 					</div>
-					
-					
 				</div>
 				<p style="text-align:center; margin-top:1px ; margin-left:18px;width:156px"> ${ list.fileName }</p>
 			  </div>
@@ -324,6 +323,7 @@ desired effect
 		</div>
  		</form> 
     </div>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -352,35 +352,18 @@ desired effect
         <h3 class="control-sidebar-heading">WEB project</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript:;">
               <i class="menu-icon fa fa-leaf bg-red"></i>
 
               <div class="menu-info">
                 <h4 class="control-sidebar-subheading">Team Name : KAS</h4>
-
                 <p>Team Member1 : ko seung hee</p>
                 <p>Team Member2 : kim hye rin</p>
               </div>
-            </a>
           </li>
         </ul>
         <!-- /.control-sidebar-menu -->
 
         <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-           남은 용량       /   총 용량
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
         </ul>
         <!-- /.control-sidebar-menu -->
 
@@ -421,6 +404,105 @@ desired effect
 
 <!-- jQuery 2.2.3 -->
 <script type="text/javascript" src="<c:url value= "/resources/main/jQuery/jquery-2.2.3.min.js" />" ></script>
+  <!-- Drag and Drop ajax  -->
+  <script type="text/javascript">
+  $(document).ready(function(){
+      var objDragAndDrop = $(".dragAndDrop");
+       
+      $(document).on("dragenter",".dragAndDrop",function(e){
+          e.stopPropagation();
+          e.preventDefault();
+      });
+      $(document).on("dragover",".dragAndDrop",function(e){
+          e.stopPropagation();
+          e.preventDefault();
+      });
+      $(document).on("drop",".dragAndDrop",function(e){
+          e.preventDefault();
+          var files = e.originalEvent.dataTransfer.files;
+       
+          handleFileUpload(files,objDragAndDrop);
+          
+      });
+       
+      $(document).on('dragenter', function (e){
+          e.stopPropagation();
+          e.preventDefault();
+      });
+      $(document).on('dragover', function (e){
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      $(document).on('drop', function (e){
+          e.stopPropagation();
+          e.preventDefault();
+      });
+       
+      function handleFileUpload(files,obj)
+      {
+         for (var i = 0; i < files.length; i++) 
+         {
+              var fd = new FormData();
+              fd.append('file', files[i]);
+              var status = new createStatusbar(obj); //Using this we can set progress.
+              status.setFileNameSize(files[i].name,files[i].size);
+              sendFileToServer(fd);
+         }
+      }
+
+      function createStatusbar(obj){
+          this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
+          this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
+          obj.after(this.statusbar);
+          this.setFileNameSize = function(name,size){
+              var sizeStr="";
+              var sizeKB = size/1024;
+              if(parseInt(sizeKB) > 1024){
+                  var sizeMB = sizeKB/1024;
+                  sizeStr = sizeMB.toFixed(2)+" MB";
+              }else{
+                  sizeStr = sizeKB.toFixed(2)+" KB";
+              }
+          }
+      }
+       
+      
+      function sendFileToServer(formData)
+      {
+          var uploadURL = "/main/dragUpload"; //Upload URL
+          var jqXHR=$.ajax({
+                  xhr: function() {
+                  var xhrobj = $.ajaxSettings.xhr();
+                  xhrobj.upload
+                  return xhrobj;
+              },
+              url: uploadURL,
+              type: "POST",
+              contentType:false,
+              processData: false,
+              cache: false,
+              data: formData,
+              success: function(){
+            	  location.reload();
+              },
+              error: function(){
+            	  alert("중복입니다.");
+            	  location.reload();
+              }
+          });  
+      }
+  });
+
+			function btn_js_prompt_click() {
+				var name = prompt("폴더명?", "새 폴더");
+				if (name != null) {
+					alert(name + " 폴더가 생성되었습니다.");
+					document.getElementById('newFolder').value = name;
+				} else {
+					alert("취소버튼을 눌렀습니다.");
+				}
+			};
+		</script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<c:url value="/resources/main/bootstrap/js/bootstrap.min.js" />" ></script>
 <!-- AdminLTE App -->

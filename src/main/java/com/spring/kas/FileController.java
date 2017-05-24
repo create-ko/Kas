@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
 import org.omg.IOP.Encoding;
@@ -15,8 +18,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -24,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileController implements ApplicationContextAware{
 	
+	String path = Path.getUr();
 	private WebApplicationContext context = null;
 
 	//File Download method
@@ -150,9 +156,48 @@ public class FileController implements ApplicationContextAware{
     	}catch (UnsupportedEncodingException e){
     		e.printStackTrace();
     	}
-    	String fullPath = Path.getUr() + fullname ;
+    	
+    	String fullPath = path+ fullname ;
+    	path += fullname+"/";
     	ModelAndView mv = new ModelAndView();
     	ArrayList<FileDTO> list = FileDAO.getInstance().listFile(fullPath);
+    	mv.addObject("list", list);
+    	mv.setViewName("main");
+    	return mv;
+	}
+	
+	
+	@RequestMapping(value = "/main/dragUpload", method=RequestMethod.POST) //ajax에서 호출하는 부분
+    @ResponseBody
+    public String upload(MultipartHttpServletRequest multipartRequest) { //Multipart로 받는다.
+          
+        Iterator<String> itr =  multipartRequest.getFileNames();
+        String filePath = Path.getUr(); //설정파일로 뺀다.
+         
+        while (itr.hasNext()) { //받은 파일들을 모두 돌린다.
+            MultipartFile mpf = multipartRequest.getFile(itr.next());
+            String originalFilename = mpf.getOriginalFilename(); //파일명
+            String fileFullPath = filePath+originalFilename; //파일 전체 경로
+            try { 
+                mpf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
+            } catch (Exception e) {
+                e.printStackTrace();
+            }               
+       }
+        return "Sueccess";
+    }
+	
+	@RequestMapping(value="/main/search", method=RequestMethod.POST)
+	public ModelAndView searchList(@RequestParam("search") String fileName){
+		String fullname = null;
+    	try{
+    		fullname=new String(fileName.getBytes("8859_1"), "utf-8");
+    	}catch (UnsupportedEncodingException e){
+    		e.printStackTrace();
+    	}
+    	String[] name = fileName.split(",");
+    	ModelAndView mv = new ModelAndView();
+    	ArrayList<FileDTO> list = SearchDAO.getInstance().searFile(name[0]);
     	mv.addObject("list", list);
     	mv.setViewName("main");
     	return mv;
