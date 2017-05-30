@@ -68,7 +68,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini" style="font-family:'Hanna',sans-serif">
-<div class="wrapper">
+<div class="wrapper" style="background-color:#ecf0f5">
 
   <!-- Main Header -->
   <header class="main-header">
@@ -96,14 +96,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="<c:url value="/resources/main/images/userface.jpg" />" class="user-image" alt="User Image">
+              <img src="<c:url value="/resources/main/images/userface.png" />" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs" style="color:white">KOSEUNGHEE</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="<c:url value="/resources/main/images/userface.jpg" />" class="img-circle" alt="User Image">
+                <img src="<c:url value="/resources/main/images/userface.png" />" class="img-circle" alt="User Image">
 
                 <p style="color:blue">
                   Kim Hyerin and Ko SeungHee - web Develop
@@ -138,7 +138,7 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<c:url value="/resources/main/images/userface.jpg" />" class="img-circle" alt="User Image">
+          <img src="<c:url value="/resources/main/images/userface.png" />" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info" style="color:#fff">
           <p>KOSEUNGHEE</p>
@@ -187,7 +187,7 @@ desired effect
 	
         
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color:#ecf0f5" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -197,12 +197,14 @@ desired effect
     </section>
 <!-- Drag and Drop -->
 			<div class=dragAndDrop>			
+			
 				<div class="btn_go_control">
 					<form action="/main" method="post" enctype="multipart/form-data">
 						<input type="file" name="uploadfile" class="btn btn-default"  style="float:left ;margin:5px">
 						<input type="submit" value="upload" class="btn btn-default"  style="float:left ; margin:6px">
 					</form>
 				</div>
+				
 				<form action="/file_control" method="get">
 				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
 				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
@@ -328,9 +330,10 @@ desired effect
   </div>
   <!-- /.content-wrapper -->
 
+
  <!-- Main Footer -->
-  <div class="main-footer" style="background-color:#fff ; padding:15px; color:#444 ; border-top :1px solid #d2d6de">
-    <!-- To the right -->
+  <div class="navbar-fixed-bottom" style="background-color:#fff; border-top :1px solid #d2d6de ;width:100% ">
+    <!-- To the right --> 
     <div class="pull-right hidden-xs">
       PROJECT
     </div>

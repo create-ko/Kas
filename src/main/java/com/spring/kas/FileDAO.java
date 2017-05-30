@@ -52,9 +52,9 @@ public class FileDAO {
 					}else{
 						dto.setName(file.getName());
 						dto.setFileName(file.getName());
+						list.add(dto);
 					}
 				}
-				list.add(dto);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
@@ -74,9 +74,9 @@ public class FileDAO {
 					}else{
 						dto.setName(file.getName());
 						dto.setFileName(file.getName());
+						list.add(dto);
 					}
 				}
-				list.add(dto);
 			}
 		}catch (Exception e){
 			e.printStackTrace();

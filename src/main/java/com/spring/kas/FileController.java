@@ -28,8 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 ///Users/seung_hee/Desktop/test_folder/
 @Controller
 public class FileController implements ApplicationContextAware{
-	
-	String path = Path.getUr();
+	String path;
 	private WebApplicationContext context = null;
 
 	//File Download method
@@ -41,7 +40,7 @@ public class FileController implements ApplicationContextAware{
     	}catch (UnsupportedEncodingException e){
     		e.printStackTrace();
     	}
-    	String fullPath = Path.getUr() + fullname ;
+    	String fullPath = path + fullname ;
     	
     	
     	if(fullname.lastIndexOf(".") == -1){
@@ -65,6 +64,7 @@ public class FileController implements ApplicationContextAware{
 // File Download Java Controller method
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public ModelAndView fileForm(){
+			path = Path.getUr();
 			ModelAndView mv = new ModelAndView();
 			ArrayList<FileDTO> list =  FileDAO.getInstance().listFile(Path.getUr());
 			mv.addObject("list", list);
@@ -159,8 +159,9 @@ public class FileController implements ApplicationContextAware{
     	
     	String fullPath = path+ fullname ;
     	path += fullname+"/";
+    	System.out.println(path);
     	ModelAndView mv = new ModelAndView();
-    	ArrayList<FileDTO> list = FileDAO.getInstance().listFile(fullPath);
+    	ArrayList<FileDTO> list = FileDAO.getInstance().listFile(path);
     	mv.addObject("list", list);
     	mv.setViewName("main");
     	return mv;
