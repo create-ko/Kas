@@ -190,16 +190,16 @@ desired effect
 				<div class="btn_go_control">
 					<form action="/main" method="post" enctype="multipart/form-data">
 						<input type="file" name="uploadfile" class="btn btn-default"  style="float:left ;margin:5px">
-						<input type="submit" value="upload" class="btn btn-default"  style="float:left ; margin:6px">
+						<input type="submit" value="업로드" class="btn btn-default"  style="float:left ; margin:6px">
 					</form>
 				</div>
 				
 				<form action="/file_control" method="get">
 				<div class="button-list" style="margin-bottom: 20px;" >
-				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
-				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
-				 <button type="submit" name="join" class="btn btn-default"  style="float:left ; margin:6px">JoinFolder</button>
-				 <button type="submit" id="newFolder" name="newFolder" class="btn btn-default" onClick="btn_js_prompt_click()" style="float:left ; margin:6px">New Folder</button>
+				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">다운로드</button>
+				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">삭제</button>
+				 <button type="submit" name="join" class="btn btn-default"  style="float:left ; margin:6px">들어가기</button>
+				 <button type="submit" id="newFolder" name="newFolder" class="btn btn-default" onClick="btn_js_prompt_click()" style="float:left ; margin:6px">새 폴더</button>
 				
 				</div>
 	
