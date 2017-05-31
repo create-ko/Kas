@@ -17,58 +17,11 @@ import org.springframework.web.servlet.view.AbstractView;
 
 public class StreamingView extends AbstractView {
 
-
-
-	//Browser Check Method
-	private String getBrowser(HttpServletRequest request){
-		String header = request.getHeader("User-Agent");
-
-		System.out.println(header);
-		if(header.indexOf("MSIE") > -1){
-    		return "MSIE";
-    	}else if(header.indexOf("Chrome") >-1){
-    		return "Chrome";
-		}else if(header.indexOf("Opera") > -1){
-			return "Opera";
-		}else if(header.indexOf("Trident/7.0") > -1){
-			return "MSIE";
-		}else if(header.indexOf("Safari") > -1){
-			return "Safari";
-		}
-		return "Firefox";
-	}
-
-	// 파일명 특수문자 처리
-	private String getDisposition(String filename, String browser) throws Exception{
-
-		String encodedFilename = null;
-		if(browser.equals("MSIE")){
-			encodedFilename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		}else if(browser.equals("Firefox")){
-			encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
-		}else if(browser.equals("Chrome")){
-			StringBuffer sb = new StringBuffer();
-			for(int i=0;i<filename.length();i++){
-				char c = filename.charAt(i);
-				if(c >'~'){
-					sb.append(URLEncoder.encode(""+c, "UTF-8"));
-				}else {
-					sb.append(c);
-				}
-			}
-			encodedFilename = sb.toString();
-		}else if(browser.equals("Opear")){
-			encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
-		}else if(browser.equals("Safari")){
-			encodedFilename = "\"" + new String(filename.getBytes("UTF-8"), "8859_1") + "\"";
-		}else {
-			throw new RuntimeException("Not supported browser");
-		}    	
-		return encodedFilename;  
-	}
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		System.out.println("여기");
+		
 		File file = (File)model.get("downloadFile");
 		
 		
@@ -99,6 +52,8 @@ public class StreamingView extends AbstractView {
 			
 			long partSize = rangeEnd - rangeStart + 1;
 			
+			
+			response.reset();
 			response.setStatus(isPart ? 200 : 206);
 			
 			response.setContentType("video/mkv");
@@ -112,6 +67,7 @@ public class StreamingView extends AbstractView {
 			OutputStream out = response.getOutputStream();
 			
 			randomFile.seek(rangeStart);
+			
 			int bufferSize = 8*1024; 
 			byte[] buf = new byte[bufferSize]; 
 			do{ 

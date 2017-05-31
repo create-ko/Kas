@@ -34,17 +34,6 @@
     
   <%-- <link href="<c:url value="/resources/main/css/skins/skin-blue.min.css" />" rel="stylesheet"  > --%>
 
-<!-- <style>
-            .dragAndDrop {
-                border: 2px dashed #92AAB0;
-                width: 230px;
-                height: 500px;
-                color: #92AAB0;
-                vertical-align: middle;
-                padding: 10px 0px 10px 10px;
-                display: table-cell;
-            }
-</style> -->
   
 </head>
 <!--
@@ -187,7 +176,7 @@ desired effect
 	
         
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="background-color:#ecf0f5" >
+  <div class="content-wrapper" style="background-color:#ecf0f5;" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -206,17 +195,19 @@ desired effect
 				</div>
 				
 				<form action="/file_control" method="get">
+				<div class="button-list" style="margin-bottom: 20px;" >
 				 <button type="submit" name="download" class="btn btn-default"  style="float:left ; margin:6px">Download</button>
 				 <button type="submit" name="delete" class="btn btn-default"  style="float:left ; margin:6px">Delete</button>
 				 <button type="submit" name="join" class="btn btn-default"  style="float:left ; margin:6px">JoinFolder</button>
 				 <button type="submit" id="newFolder" name="newFolder" class="btn btn-default" onClick="btn_js_prompt_click()" style="float:left ; margin:6px">New Folder</button>
-				<br><br><br>
+				
+				</div>
 	
       <!-- Your Page Content Here -->
-		<div>
+		<div class="file-list" style="margin: 20px; clear: left;">
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
-				<div style="float:left">
+				<div style="float:left; margin-bottom: 20px;">
 				<input id="${ list.fileName }" type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white" style="float:left ">
 				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px ; padding-top: 30px">
 				 <div style="padding-left:43px">
@@ -332,13 +323,13 @@ desired effect
 
 
  <!-- Main Footer -->
-  <div class="navbar-fixed-bottom" style="background-color:#fff; border-top :1px solid #d2d6de ;width:100% ">
+  <div class="navbar-fixed-bottom" style="background-color:#fff; border-top :1px solid #d2d6de ;width:100%  ">
     <!-- To the right --> 
     <div class="pull-right hidden-xs">
       PROJECT
     </div>
     <!-- Default to the left -->
-    <strong>KAS_PROJECT &copy; 2017 <a href="<c:url value="/main" />">Company</a>.</strong> HYERIN
+    <strong>KAS_PROJECT &copy; 2017 <a href="<c:url value="/main" />">Company</a>.</strong> SEUNGHEE_HYERIN
   </div>
 
   <!-- Control Sidebar -->
