@@ -3,7 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.spring</groupId>
-	<artifactId>kas</artifactId>
 	<name>Kas_Project</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -177,5 +176,6 @@
             </plugin>
         </plugins>
     </build>
+    <artifactId>kas</artifactId>
 </project>
 	

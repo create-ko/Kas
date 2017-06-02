@@ -45,13 +45,9 @@ public class FileController implements ApplicationContextAware{
     	if(fullname.lastIndexOf(".") == -1){
     		return new ModelAndView("redirect:/main");
     	}else if((fullname.indexOf("mkv") >0) || (fullname.indexOf("avi") >0) || (fullname.indexOf("mp4")) > 0 || (fullname.indexOf("mov")) > 0 || (fullname.indexOf("wmv")) > 0 || (fullname.indexOf("mpeg")) > 0){
-
-    		System.out.println("StreamingDownload file");	
     		File downloadFile = new File(fullPath);
             return new ModelAndView("streamingdownload", "downloadFile", downloadFile);
     	}else {
-
-    		System.out.println("just file");
     		File downloadFile = new File(fullPath);
     		return new ModelAndView("download", "downloadFile", downloadFile);
     	}

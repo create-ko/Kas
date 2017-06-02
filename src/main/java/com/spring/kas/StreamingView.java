@@ -23,10 +23,10 @@ public class StreamingView extends AbstractView {
 		System.out.println("여기");
 		
 		File file = (File)model.get("downloadFile");
-		
-		
-		RandomAccessFile randomFile = new RandomAccessFile(file, "r");
 
+		RandomAccessFile randomFile = new RandomAccessFile(file, "r");
+		
+		
 		long rangeStart = 0;  
 		long rangeEnd = 0;  
 		boolean isPart=false;
@@ -38,7 +38,7 @@ public class StreamingView extends AbstractView {
 			if(range!=null){
 				if(range.endsWith("-")){
 					range = range+(movieSize - 1); 
-					}
+				}
 				int idxm = range.trim().indexOf("-"); //"-" 위치 
 				rangeStart = Long.parseLong(range.substring(6,idxm)); 
 				rangeEnd = Long.parseLong(range.substring(idxm+1)); 
@@ -56,7 +56,7 @@ public class StreamingView extends AbstractView {
 			response.reset();
 			response.setStatus(isPart ? 200 : 206);
 			
-			response.setContentType("video/mkv");
+			response.setContentType("video/mp4");
 			
 			
 			response.setHeader("Content-Range", "bytes "+rangeStart+"-"+rangeEnd+"/"+movieSize); 
@@ -67,6 +67,7 @@ public class StreamingView extends AbstractView {
 			OutputStream out = response.getOutputStream();
 			
 			randomFile.seek(rangeStart);
+			
 			
 			int bufferSize = 8*1024; 
 			byte[] buf = new byte[bufferSize]; 
