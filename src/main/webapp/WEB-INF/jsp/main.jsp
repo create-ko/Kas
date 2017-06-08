@@ -207,7 +207,7 @@ desired effect
 		<div class="file-list" style="margin: 20px; clear: left;">
 			<c:if test="${ !empty list }"> 
 				<c:forEach items="${list}" var="list">
-				<div style="float:left; margin-bottom: 20px;">
+				<div style="float:left; width:178px; height:230px;">
 				<input id="${ list.fileName }" type="checkbox" name="fileName" value="${ list.fileName }" class="thumbnail white" style="float:left ">
 				 <div class="row" style="border:1px solid #d2cbcb; float:left; display:inline-block ; width:156px ; height:156px; display:block ; margin:5px; padding-bottom:30px ; padding-top: 30px">
 				 <div style="padding-left:43px">
@@ -308,7 +308,9 @@ desired effect
 					</label>
 					</div>
 				</div>
-				<p style="text-align:center; margin-top:1px ; margin-left:18px;width:156px"> ${ list.fileName }</p>
+				<div style="text-align:center; margin-top:1px ; margin-left:18px; width:156px; margin-bottom:20px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+					<p> ${ list.fileName }</p>
+				</div>
 			  </div>
 			</c:forEach>
 			</c:if>

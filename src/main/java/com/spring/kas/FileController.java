@@ -75,13 +75,16 @@ public class FileController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = {RequestMethod.POST, RequestMethod.POST})
 	public String fileSubmit(FileDTO dto) {
         MultipartFile uploadfile = dto.getUploadfile();
+//        String fullPath = path+ uploadfile.getName() ;
+    	path += uploadfile.getOriginalFilename()+"/";
+    	System.out.println(path);
         if (uploadfile != null) {
             String fileName = uploadfile.getOriginalFilename();
             long fileSize = uploadfile.getSize();
             dto.setFileName(fileName);
             dto.setFileSize(fileSize);
             try {
-                File file = new File(Path.getUr() + fileName);
+                File file = new File(path);
                 uploadfile.transferTo(file);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -155,7 +158,7 @@ public class FileController implements ApplicationContextAware{
     		e.printStackTrace();
     	}
     	
-    	String fullPath = path+ fullname ;
+//    	String fullPath = path+ fullname ;
     	path += fullname+"/";
     	System.out.println(path);
     	ModelAndView mv = new ModelAndView();
