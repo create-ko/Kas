@@ -127,7 +127,8 @@ public class FileController implements ApplicationContextAware{
     	}catch (UnsupportedEncodingException e){
     		e.printStackTrace();
     	}
-    	String fullPath = Path.getUr() + fullname ;
+    	path += fullname +"/";
+    	String fullPath = path;
 		File file = new File(fullPath);
 		file.mkdirs();
 		return new ModelAndView("redirect:/main");
@@ -142,7 +143,8 @@ public class FileController implements ApplicationContextAware{
     	}catch (UnsupportedEncodingException e){
     		e.printStackTrace();
     	}
-    	String fullPath = Path.getUr() + fullname ;
+    	path += fullname +"/";
+    	String fullPath = path;
     	File deleteFile = new File(fullPath);
     	deleteFile.delete();
     	return new ModelAndView("redirect:/main");
